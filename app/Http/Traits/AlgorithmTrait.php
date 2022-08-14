@@ -11,6 +11,8 @@ trait AlgorithmTrait
         return ($n == 0 || $n == 1) ? 1 : bcmul($n, $this->bcfact($n - 1));
     }
 
+    // Chudnovsky algorithm
+    // https://en.wikipedia.org/wiki/Chudnovsky_algorithm
     public function algoPi($precision)
     {
         $num = 0;
