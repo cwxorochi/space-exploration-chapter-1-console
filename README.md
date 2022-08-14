@@ -55,7 +55,20 @@ Pre-requisite for MacOs
 
 *Notes: to ensure valet using correct php version, perform ```valet use php@8.1``` at terminal to switch to correct php version*
 
-#### Test Case
+## Application flow
+First, the endpoint is registered at ```routes/api.php```, all routes in this file will auto prefix with ```/api``` when accessing the endpoint from frontend application.
+
+I setup a reusable algorithm class in the ```app/Http/Traits``` folder so that anywhere that needs the algorithm can be reused. 
+
+>##### -
+>##### The Pi algorithm is using Chudnovsky algorithm
+>##### -
+
+From the routes, we can two parameters of ```Route::get('sun-attributes', [StationController::class, 'getSunAttributes']);```, first is the endpoint url which will be ```http://space-exploration-chapter-1-console.test/api/sun-attributes```, second is the targeted controller that holds the logic, from here is an array with ```StationController``` class at ```app/Http/StationController``` and calls function ```getSunAttributes()```
+
+This function will returned a ```Resource``` which serve as a data display layer between frontend and backend.
+
+## Test Case
 Run ```php artisan test``` to perform unit test
 ###### Case - Pi Algorithm with approved constant of Pi 
 >Test the algorithm of Pi with sample provided from the reference link (http://www.math.com/tables/constants/pi.htm) of Pi value.
